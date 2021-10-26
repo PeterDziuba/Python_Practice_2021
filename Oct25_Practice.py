@@ -1,4 +1,5 @@
 import random
+import os
 
 def display_board(board):
     # The function accepts one parameter containing the board's current status
@@ -10,6 +11,13 @@ def display_board(board):
 def enter_move(board):
     # The function accepts the board's current status, asks the user about their move, 
     # checks the input, and updates the board according to the user's decision.
+    my_list = make_list_of_free_fields(board)
+    print("available moves:\n")
+    print(len(my_list))
+    if len(my_list) < 1:
+        print("Draw")
+        return
+    
     print("Your turn!\n")
     o_move = str(input("Where would you like to play?\n"))
     try:
@@ -91,8 +99,17 @@ def make_list_of_free_fields(board):
     # the list consists of tuples, while each tuple is a pair of row and column numbers.
     my_list = []
     for i in board:
-        my_list.append(i)
+        for j in i:
+            if j != "X" and j != "O":
+                my_list.append(j)
+                
     return tuple(my_list)
+
+def tie_game(board):
+    chances = make_list_of_free_fields(board)
+    if len(chances) < 1:
+        return True
+
 
 def victory_for(board):
     # The function analyzes the board's status in order to check if 
@@ -207,20 +224,21 @@ def make_board():
     
 def main():
     board = make_board()
-    while not victory_for(board):
+    while (not victory_for(board)) and (not tie_game(board)):
+        os.system("clear")
         display_board(board)
         enter_move(board)
+        os.system("clear")
         display_board(board)
         if victory_for(board):
             victory_for(board)
             break
+        os.system("clear")
         print("Computer\'s turn!")
         draw_move(board)
-        
         display_board(board)
         print("\n----------\n")
         if victory_for(board):
             victory_for(board)
             break
 main()
-    
