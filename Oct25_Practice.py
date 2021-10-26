@@ -96,6 +96,7 @@ def enter_move(board):
 
 def make_list_of_free_fields(board):
     # The function browses the board and builds a list of all the free squares; 
+    # the list consists of tuples, while each tuple is a pair of row and column numbers.
     my_list = []
     for i in board:
         for j in i:
@@ -135,11 +136,13 @@ def victory_for(board):
 
 def draw_move(board):
     # The function draws the computer's move and updates the board.
-    comp_move = str(random.randrange(1, 9))
-    my_list = make_list_of_free_fields(board)
-    if len(my_list) < 1:
-        print("Draw")
+    
+    
+    if tie_game(board):
+        print("It\'s a draw!\n\n")
         return
+    
+    comp_move = str(random.randrange(1, 9))
     
     try:
         if comp_move == "1":
