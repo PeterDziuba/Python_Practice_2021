@@ -16,28 +16,28 @@ def enter_move(board):
         if o_move == "1":
             if board[0][0] != "X" and board[0][0] != "O":
                 board[0][0] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
         elif o_move == "2":
             if board[0][1] != "X" and board[0][1] != "O":
                 board[0][1] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
         elif o_move == "3":
             if board[0][2] != "X" and board[0][2] != "O":
                 board[0][2] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
         elif o_move == "4":
             if board[1][0] != "X" and board[1][0] != "O":
                 board[1][0] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
@@ -49,7 +49,7 @@ def enter_move(board):
         elif o_move == "6":
             if board[1][2] != "X" and board[1][2] != "O":
                 board[1][2] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
@@ -57,7 +57,7 @@ def enter_move(board):
         elif o_move == "7":
             if board[2][0] != "X" and board[2][0] != "O":
                 board[2][0] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
@@ -65,7 +65,7 @@ def enter_move(board):
         elif o_move == "8":
             if board[2][1] != "X" and board[2][1] != "O":
                 board[2][1] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
@@ -73,7 +73,7 @@ def enter_move(board):
         elif o_move == "9":
             if board[2][2] != "X" and board[2][2] != "O":
                 board[2][2] = "O"
-                return board
+                
             else:
                 print("Invalid entry")
                 enter_move(board)
@@ -130,8 +130,7 @@ def draw_move(board):
             if board[0][0] != "X" and board[0][0] != "O":
                 print("Computer chose 1!")
                 board[0][0] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -139,8 +138,7 @@ def draw_move(board):
             if board[0][1] != "X" and board[0][1] != "O":
                 print("Computer chose 2!")
                 board[0][1] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -148,8 +146,7 @@ def draw_move(board):
             if board[0][2] != "X" and board[0][2] != "O":
                 print("Computer chose 3!")
                 board[0][2] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -157,8 +154,7 @@ def draw_move(board):
             if board[1][0] != "X" and board[1][0] != "O":
                 print("Computer chose 4!")
                 board[1][0] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -169,8 +165,7 @@ def draw_move(board):
             if board[1][2] != "X" and board[1][2] != "O":
                 print("Computer chose 6!")
                 board[1][2] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -178,8 +173,7 @@ def draw_move(board):
             if board[2][0] != "X" and board[2][0] != "O":
                 print("Computer chose 7!")
                 board[2][0] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -187,8 +181,7 @@ def draw_move(board):
             if board[2][1] != "X" and board[2][1] != "O":
                 print("Computer chose 8!")
                 board[2][1] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -196,8 +189,7 @@ def draw_move(board):
             if board[2][2] != "X" and board[2][2] != "O":
                 print("Computer chose 9!")
                 board[2][2] = "X"
-                print(board)
-                return board
+                
             else:
                 draw_move(board)
                 
@@ -217,13 +209,13 @@ def main():
     board = make_board()
     while not victory_for(board):
         display_board(board)
-        board = enter_move(board)
+        enter_move(board)
         display_board(board)
         if victory_for(board):
             victory_for(board)
             break
         print("Computer\'s turn!")
-        board = draw_move(board)
+        draw_move(board)
         
         display_board(board)
         print("\n----------\n")
