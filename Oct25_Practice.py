@@ -115,20 +115,20 @@ def victory_for(board):
     # The function analyzes the board's status in order to check if 
     # the player using 'O's or 'X's has won the game
     for i in board:
-        if i[0] == i[1] and i[1] == i[2]:
+        if (i[0] == i[1]) and (i[1] == i[2]):
             print(str(i[0]),"won!")
             return True
             
-    if board[0][0] == board[1][1] and board[1][1] == board[2][2]:
+    if (board[0][0] == board[1][1]) and (board[1][1] == board[2][2]):
         print(str(board[0][0]),"won!")
         return True
         
-    if board[0][2] == board[1][1] and board[1][1] == board[2][0]:
+    if (board[0][2] == board[1][1]) and (board[1][1] == board[2][0]):
         print(str(board[0][0]), "won!")
         return True
         
     for i in range(3):
-        if board[0][i] == board[1][i] and board[1][i] == board[2][i]:
+        if (board[0][i] == board[1][i]) and (board[1][i] == board[2][i]):
             print(str(board[0][i]), "won!")
             return True
             
@@ -237,8 +237,10 @@ def main():
         print("Computer\'s turn!")
         draw_move(board)
         display_board(board)
-        print("\n----------\n")
+        print("\n---------------\n")
         if victory_for(board):
             victory_for(board)
             break
+    if tie_game(board):
+        print("It\'s a draw!\n\n")
 main()
